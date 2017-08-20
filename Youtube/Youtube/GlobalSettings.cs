@@ -8,6 +8,7 @@ namespace Youtube
         public const string AuthenticationEndpoint="https://accounts.google.com/o/oauth2/v2/auth";
         public const string Client_ID="936293862456-1e3a521r9psh4u78qfmcitqu9tucjhkn.apps.googleusercontent.com";
         public const string Client_Serect="BkGkMyb_AxntccTLeHnq4yUo ";
+        public const string Redirect_Uri = "";
 
         //****************************************Youtube request*********************************************
         #region Activities
