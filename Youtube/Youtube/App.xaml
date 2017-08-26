@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<unity:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:unity="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
              x:Class="Youtube.App">
@@ -8,4 +8,4 @@
 		<!-- Application resource dictionary -->
 
 	</Application.Resources>
-</unity:PrismApplication>
+</Application>

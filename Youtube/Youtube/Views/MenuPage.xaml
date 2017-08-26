@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Youtube.Behaviors;assembly=Youtube"
+             x:Class="Youtube.Views.MenuPage">
+    <ContentPage.Content>
+       <Grid>
+           <ListView x:Name="Items"
+                     ItemsSource="{Binding MenuItems,Mode=OneWay}"
+                     behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding ItemSelectedCommand}">
+               <ListView.ItemTemplate>
+                   <DataTemplate>
+                       <ViewCell>
+                            <StackLayout
+                               Orientation="Horizontal">
+                                <StackLayout.Triggers>
+                                   <DataTrigger
+                                       TargetType="StackLayout"
+                                       Binding="{Binding IsEnabled, Mode=TwoWay}"
+                                       Value="False">
+                                       <Setter Property="Opacity"
+                                               Value="0.6" />
+                                   </DataTrigger>
+                               </StackLayout.Triggers>
+                               <Image 
+                                   Source=""
+                                   Aspect="AspectFit"
+                                   WidthRequest="22"
+                                   HeightRequest="22"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                               <Label 
+                                   Text="{Binding Title}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                   
+                               </Label>
+                           </StackLayout>
+                       </ViewCell>
+                   </DataTemplate>
+               </ListView.ItemTemplate>
+           </ListView>
+       </Grid>
+    </ContentPage.Content>
+</ContentPage>

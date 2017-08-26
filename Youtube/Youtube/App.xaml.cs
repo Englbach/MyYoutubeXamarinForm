@@ -2,32 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Prism.Unity;
 using Xamarin.Forms;
+using Youtube.Services;
+using Youtube.Services.Interfaces;
+using Youtube.ViewModels.Base;
 
 namespace Youtube
 {
-    public partial class App : PrismApplication
+    public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new Youtube.MainPage();
+            if (Device.OS == TargetPlatform.Windows)
+            {
+                InitNavigation();
+            }
         }
 
-       
-
-        protected override void OnInitialized()
+        protected override async void OnStart()
         {
-            throw new NotImplementedException();
+            base.OnStart();
+
+            if (Device.OS != TargetPlatform.Windows)
+            {
+                await InitNavigation();
+            }
         }
 
-        protected override void RegisterTypes()
+        private Task InitNavigation()
         {
-            throw new NotImplementedException();
+            var navigationService = ViewModelLocator.Instance.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
         }
-
-  
     }
 }

@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Youtube
 {
-    public partial class MainPage : ContentPage
+    public interface IOperatingSystemVersionProvider
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        string GetOperatingSystemVersionString();
     }
 }

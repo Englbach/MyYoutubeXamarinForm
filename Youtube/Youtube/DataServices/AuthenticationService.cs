@@ -50,7 +50,7 @@ namespace Youtube.DataServices
 
             
 
-            return true;
+            return Task.FromResult(true);
 
         }
     }
