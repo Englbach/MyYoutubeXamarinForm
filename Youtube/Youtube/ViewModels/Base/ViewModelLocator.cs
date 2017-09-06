@@ -38,6 +38,8 @@ namespace Youtube.ViewModels.Base
             RegisterSingleton<INavigationService, NavigationService>();
             //data services
             _unityContainer.RegisterType<IAuthenticationService, AuthenticationService>();
+            _unityContainer.RegisterType<IProfileService, ProfileService>();
+            _unityContainer.RegisterType<ITrendingService, TrendingService>();
             //viewmodels
             _unityContainer.RegisterType<LoginViewModel>();
             _unityContainer.RegisterType<MainViewModel>();

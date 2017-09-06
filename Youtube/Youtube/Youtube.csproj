@@ -45,7 +45,9 @@
     <Compile Include="DataServices\Base\ServiceAuthenticationException.cs" />
     <Compile Include="DataServices\Interfaces\IAuthenticationService.cs" />
     <Compile Include="DataServices\Interfaces\IProfileService.cs" />
+    <Compile Include="DataServices\Interfaces\ITrendingService.cs" />
     <Compile Include="DataServices\ProfileService.cs" />
+    <Compile Include="DataServices\TrendingService.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="Helpers\OnCustomPlatform.cs" />
     <Compile Include="Helpers\Settings.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Models\Enums\MenuItemType.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\TrendingModel.cs" />
     <Compile Include="Models\Users\AuthenticationRequest.cs" />
     <Compile Include="Models\Users\UserProfile.cs" />
     <Compile Include="Properties\Annotations.cs" />

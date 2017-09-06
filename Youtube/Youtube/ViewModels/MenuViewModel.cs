@@ -54,6 +54,8 @@ namespace Youtube.ViewModels
         {
             _profileService = profileService;
             _authenticationService = authenticationService;
+
+            InitMenuItem();
         }
 
         private async void OnSelectedItem(MenuItem item)

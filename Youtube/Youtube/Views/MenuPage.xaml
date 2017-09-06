@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="clr-namespace:Youtube.Behaviors;assembly=Youtube"
+             Title=" "
              x:Class="Youtube.Views.MenuPage">
     <ContentPage.Content>
        <Grid>
@@ -23,7 +24,7 @@
                                    </DataTrigger>
                                </StackLayout.Triggers>
                                <Image 
-                                   Source=""
+                                   Source="{Binding}"
                                    Aspect="AspectFit"
                                    WidthRequest="22"
                                    HeightRequest="22"
