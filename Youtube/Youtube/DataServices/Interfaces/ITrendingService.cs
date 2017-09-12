@@ -9,9 +9,9 @@ namespace Youtube.DataServices.Interfaces
 {
     public interface ITrendingService
     {
-        Task<IEnumerable<TrendingModel.Root>> GetTrending(int limit, string paging,string chart);
-        Task<IEnumerable<TrendingModel.Root>> GetTrendingByLocation();
-        Task<IEnumerable<TrendingModel.Root>> GetTrendingByPaging(string channelId, string paging, int limit);
-        Task<TrendingModel.Root> GetInforTrending(string Id);
+        Task<IEnumerable<TrendingModel.RootObject>> GetTrending(int limit, string paging,string chart);
+        Task<IEnumerable<TrendingModel.RootObject>> GetTrendingByLocation();
+        Task<IEnumerable<TrendingModel.RootObject>> GetTrendingByPaging(string channelId, string paging, int limit);
+        Task<TrendingModel.RootObject> GetInforTrending(string Id);
     }
 }

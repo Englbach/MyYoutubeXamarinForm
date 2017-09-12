@@ -3,32 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Youtube.Views.HomePage">
     <ContentPage.Content>
-        <ListView x:Name="lstHome" ItemsSource="{Binding TrendingRoots}">
+        <ListView x:Name="lstHome" ItemsSource="{Binding TrendingRoots[0].items}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout
                                Orientation="Horizontal">
-                            <StackLayout.Triggers>
-                                <DataTrigger
-                                       TargetType="StackLayout"
-                                       Binding="{Binding IsEnabled, Mode=TwoWay}"
-                                       Value="False">
-                                    <Setter Property="Opacity"
-                                               Value="0.6" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
+                            
                             <Image 
-                                   Source="{Binding Thumbnails.medium}"
+                                   Source="{Binding snippet.Thumbnails.medium}"
                                    Aspect="AspectFit"
-                                   WidthRequest="22"
-                                   HeightRequest="22"
+                                   WidthRequest="220"
+                                   HeightRequest="220"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center" />
                             <Label 
-                                   Text="{Binding Title}"
+                                   Text="{Binding snippet.title}"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Center">
+                                   VerticalOptions="Center"
+                                   TextColor="Black">
 
                             </Label>
                         </StackLayout>

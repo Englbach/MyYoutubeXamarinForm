@@ -46,10 +46,12 @@ namespace Youtube.DataServices.Base
 
             string serialied = await response.Content.ReadAsStringAsync();
             TResult result =
-                await Task.Run(() => JsonConvert.DeserializeObject<TResult>(serialied, _serializerSettings));
+                await Task.Run(() => JsonConvert.DeserializeObject<TResult>('['+serialied+']', _serializerSettings));
 
             return result;
         }
+
+      
 
         /// <summary>
         /// PostAsync is API. We only call this function

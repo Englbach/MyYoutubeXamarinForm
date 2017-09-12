@@ -15,11 +15,11 @@ namespace Youtube.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        private ObservableCollection<TrendingModel.Root> _trendingRoots;
+        private ObservableCollection<TrendingModel.RootObject> _trendingRoots;
         private readonly ITrendingService _trendingService;
 
 
-        public ObservableCollection<TrendingModel.Root> TrendingRoots
+        public ObservableCollection<TrendingModel.RootObject> TrendingRoots
         {
             get { return _trendingRoots; }
             set
@@ -31,7 +31,7 @@ namespace Youtube.ViewModels
         public HomeViewModel(ITrendingService trendingService)
         {
             _trendingService = trendingService;
-            _trendingRoots = new ObservableCollection<TrendingModel.Root>();
+            TrendingRoots = new ObservableCollection<TrendingModel.RootObject>();
         }
 
         public async override Task InitializeAsync(object navigationData)
@@ -46,7 +46,7 @@ namespace Youtube.ViewModels
             try
             {
                 var ridesResult = await _trendingService.GetTrending(0,null, "mostPopular");
-                TrendingRoots = new ObservableCollection<TrendingModel.Root>(ridesResult);
+                TrendingRoots = new ObservableCollection<TrendingModel.RootObject>(ridesResult);
             }
             catch (Exception ex) when (ex is WebException || ex is HttpRequestException)
             {
