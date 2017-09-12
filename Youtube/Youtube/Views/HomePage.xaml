@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading"
              x:Class="Youtube.Views.HomePage">
     <ContentPage.Content>
         <ListView x:Name="lstHome" ItemsSource="{Binding TrendingRoots[0].items}">
@@ -9,14 +11,12 @@
                     <ViewCell>
                         <StackLayout
                                Orientation="Horizontal">
-                            
-                            <Image 
-                                   Source="{Binding snippet.Thumbnails.medium}"
-                                   Aspect="AspectFit"
-                                   WidthRequest="220"
-                                   HeightRequest="220"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
+
+                            <ffimageloading:CachedImage
+                                    Source="{Binding snippet.thumbnails.medium}"
+                                    x:Name="Image" HorizontalOptions="Center" VerticalOptions="Center"
+                                    DownsampleToViewSize="true" 
+                                    Aspect="AspectFill" HeightRequest="100" WidthRequest="100" />
                             <Label 
                                    Text="{Binding snippet.title}"
                                    HorizontalOptions="Center"

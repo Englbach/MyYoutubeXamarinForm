@@ -31,7 +31,7 @@ namespace Youtube.ViewModels
         public HomeViewModel(ITrendingService trendingService)
         {
             _trendingService = trendingService;
-            TrendingRoots = new ObservableCollection<TrendingModel.RootObject>();
+            //TrendingRoots = new ObservableCollection<TrendingModel.RootObject>();
         }
 
         public async override Task InitializeAsync(object navigationData)
