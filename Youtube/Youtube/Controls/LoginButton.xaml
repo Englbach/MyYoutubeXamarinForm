@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:Youtube.Helpers;assembly=Youtube"
+             x:Class="Youtube.Controls.LoginButton"
+             Spacing="0"
+             Margin="12"
+             Orientation="Horizontal">
+    <Image       
+        WidthRequest="20"
+        HeightRequest="20">
+        <Image.Source>
+            <helper:OnCustomPlatform
+                x:TypeArguments="ImageSource"
+                Android="Login-User-20.png"
+                iOS="Login-User-20.png"
+                WinPhone="Assets\Login-User-20.png"
+                Windows="Assets\Login-User-20.png">
+
+            </helper:OnCustomPlatform>
+        </Image.Source>
+        <Image.Margin>
+            <helper:OnCustomPlatform
+                x:TypeArguments="Thickness"
+                Android="0,0,14,0"
+                iOS="0,0,14,0"
+                WinPhone="0,14,14,14"
+                Windows="0,14,14,14">
+
+            </helper:OnCustomPlatform>
+        </Image.Margin>
+    </Image>
+
+    <Label Text="Login">
+        <Label.Margin>
+            <OnPlatform
+                x:TypeArguments="Thickness"
+                WinPhone="0,14">
+
+            </OnPlatform>
+        </Label.Margin>
+    </Label>
+</StackLayout>

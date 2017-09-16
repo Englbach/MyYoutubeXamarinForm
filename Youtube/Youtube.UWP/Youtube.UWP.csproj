@@ -90,6 +90,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\Fonts\OpenSans-Semibold.ttf" />
+    <Content Include="Assets\Fonts\OpenSans-Italic.ttf" />
+    <Content Include="Assets\Fonts\OpenSans-Light.ttf" />
+    <Content Include="Assets\Fonts\OpenSans-Regular.ttf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +112,8 @@
     <None Include="Youtube.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Login-User-20.png" />
+    <Content Include="Assets\Logout-User-20.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

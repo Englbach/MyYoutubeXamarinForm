@@ -180,6 +180,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <AndroidAsset Include="Assets\Fonts\OpenSans-Semibold.ttf" />
+    <AndroidAsset Include="Assets\Fonts\OpenSans-Italic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\OpenSans-Light.ttf" />
+    <AndroidAsset Include="Assets\Fonts\OpenSans-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -203,6 +207,12 @@
       <Project>{1bcc5fdb-be87-4904-9702-91e9251ddba3}</Project>
       <Name>Youtube</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Logout-User-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Login-User-20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

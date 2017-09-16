@@ -33,6 +33,7 @@ namespace Youtube.ViewModels.Base
             _unityContainer.RegisterType<IRequestProvider, RequestProvider>();
             _unityContainer.RegisterType<IPageDialogService, PageDialogService>();
             _unityContainer.RegisterType<IDialogService, DialogService>();
+
             //_unityContainer.RegisterType<IServiceLocator,Location>()
             //servicers
             RegisterSingleton<INavigationService, NavigationService>();
@@ -40,11 +41,13 @@ namespace Youtube.ViewModels.Base
             _unityContainer.RegisterType<IAuthenticationService, AuthenticationService>();
             _unityContainer.RegisterType<IProfileService, ProfileService>();
             _unityContainer.RegisterType<ITrendingService, TrendingService>();
+            _unityContainer.RegisterType<IVideoService, VideoService>();
             //viewmodels
             _unityContainer.RegisterType<LoginViewModel>();
             _unityContainer.RegisterType<MainViewModel>();
             _unityContainer.RegisterType<MenuViewModel>();
             _unityContainer.RegisterType<HomeViewModel>();
+            _unityContainer.RegisterType<VideoViewModel>();
 
         }
 

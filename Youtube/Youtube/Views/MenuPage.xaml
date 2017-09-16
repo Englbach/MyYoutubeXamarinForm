@@ -2,45 +2,255 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="clr-namespace:Youtube.Behaviors;assembly=Youtube"
+             xmlns:helper="clr-namespace:Youtube.Helpers;assembly=Youtube"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:Youtube.Controls;assembly=Youtube"
              Title=" "
              x:Class="Youtube.Views.MenuPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ProfileNameLabelStyle"
+                   TargetType="{x:Type Label}"
+                   >
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource BigSize}" />
+            </Style>
+
+            <Style x:Key="UwpProfileNameLabelStyle"
+                   TargetType="{x:Type Label}"
+                  >
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+            </Style>
+
+            <Style x:Key="MenuItemLabelStyle"
+                   TargetType="{x:Type Label}"
+                   >
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="Opacity"
+                        Value="0.87" />
+            </Style>
+
+            <Style x:Key="UwpMenuItemLabelStyle"
+                   TargetType="{x:Type Label}"
+                   >
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="Opacity"
+                        Value="0.87" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-       <Grid>
-           <ListView x:Name="Items"
-                     ItemsSource="{Binding MenuItems,Mode=OneWay}"
-                     behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding ItemSelectedCommand}">
-               <ListView.ItemTemplate>
-                   <DataTemplate>
-                       <ViewCell>
-                            <StackLayout
-                               Orientation="Horizontal">
-                                <StackLayout.Triggers>
-                                   <DataTrigger
-                                       TargetType="StackLayout"
-                                       Binding="{Binding IsEnabled, Mode=TwoWay}"
-                                       Value="False">
-                                       <Setter Property="Opacity"
-                                               Value="0.6" />
-                                   </DataTrigger>
-                               </StackLayout.Triggers>
-                               <Image 
-                                   Source="{Binding}"
-                                   Aspect="AspectFit"
-                                   WidthRequest="22"
-                                   HeightRequest="22"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
-                               <Label 
-                                   Text="{Binding Title}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center">
-                                   
-                               </Label>
-                           </StackLayout>
-                       </ViewCell>
-                   </DataTemplate>
-               </ListView.ItemTemplate>
-           </ListView>
-       </Grid>
+        <Grid>
+            <Grid.BackgroundColor>
+                <helper:OnCustomPlatform
+                    x:TypeArguments="Color"
+                    Android="{StaticResource WhiteColor}"
+                    iOS="{StaticResource WhiteColor}"
+                    WinPhone="{StaticResource WhiteColor}"
+                    Windows="{StaticResource WhiteColor}">
+
+                </helper:OnCustomPlatform>
+            </Grid.BackgroundColor>
+
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <helper:OnCustomPlatform
+                            x:TypeArguments="GridLength"
+                            Android="*"
+                            iOS="*"
+                            WinPhone="*"
+                            Windows="*">
+
+                        </helper:OnCustomPlatform>
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <helper:OnCustomPlatform
+                           x:TypeArguments="GridLength"
+                           Android="Auto"
+                           iOS="Auto"
+                           WinPhone="Auto"
+                           Windows="Auto">
+
+                        </helper:OnCustomPlatform>
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.Margin>
+                <helper:OnCustomPlatform
+                   x:TypeArguments="Thickness"
+                   Android="0"
+                   iOS="0"
+                   WinPhone="0,0,0,48"
+                   Windows="0,0,0,48">
+
+                </helper:OnCustomPlatform>
+            </Grid.Margin>
+
+            <!--MENU-->
+
+            <Grid Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--BACKGROUND PROFILE-->
+                <ffimageloading:CachedImage
+                   Grid.Row="0"
+                   Source="{Binding}"
+                   x:Name="imgBackgroundProfile"
+                   DownsampleToViewSize="true" 
+                   HeightRequest="{StaticResource HeaderSize}"
+                   Aspect="AspectFill"/>
+
+                <!--MOBILE PROFILE-->
+                <Grid Row="0">
+                    <Grid.IsVisible>
+                        <OnPlatform
+                            x:TypeArguments="x:Boolean"
+                            Android="True"
+                            iOS="True"
+                            WinPhone="True"></OnPlatform>
+                    </Grid.IsVisible>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <ffimageloading:CachedImage
+                        Grid.Column="0"
+                        Source="{Binding}"
+                        x:Name="imgProfile"
+                        WidthRequest="50" HeightRequest="50"
+                        DownsampleToViewSize="true" 
+                        Aspect="AspectFill"/>
+
+                    <StackLayout
+                       Grid.Column="1"
+                       Margin="0,15"
+                       VerticalOptions="CenterAndExpand">
+
+                        <Label Text="{Binding}"
+                              Style="{StaticResource BlackColor}"></Label>
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid
+                   Grid.Row="1"
+                   BackgroundColor="#f8f8f8"
+                   Opacity="0.2"
+                   HeightRequest="1">
+
+                </Grid>
+
+                <!--MENU-->
+                <ListView x:Name="Items"
+                         Grid.Row="2"
+                         ItemsSource="{Binding MenuItems,Mode=OneWay}"
+                         behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding ItemSelectedCommand}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                   Orientation="Horizontal">
+                                    <StackLayout.Triggers>
+                                        <DataTrigger
+                                           TargetType="StackLayout"
+                                           Binding="{Binding IsEnabled, Mode=TwoWay}"
+                                           Value="False">
+                                            <Setter Property="Opacity"
+                                                   Value="0.6" />
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                    <StackLayout.Margin>
+                                        <helper:OnCustomPlatform
+                                            x:TypeArguments="Thickness"
+                                            Android="38,9,0,0"
+                                            iOS="38,9,0,0"
+                                            WinPhone="14,9,0,14"
+                                            Windows="14,9,0,14"></helper:OnCustomPlatform>
+                                    </StackLayout.Margin>
+                                    <Image 
+                                       Source="{Binding}"
+                                       Aspect="AspectFit"
+                                       WidthRequest="22"
+                                       HeightRequest="22"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                    <Label 
+                                       Text="{Binding Title}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                        <Label.Margin>
+                                            <helper:OnCustomPlatform
+                                                x:TypeArguments="Thickness"
+                                                Android="5,0,0,0"
+                                                iOS="5,0,0,0"
+                                                Windows="23,0,0,0"
+                                                WinPhone="5,0,0,0"></helper:OnCustomPlatform>
+                                        </Label.Margin>
+                                        <Label.Style>
+                                            <helper:OnCustomPlatform
+                                                x:TypeArguments="Style"
+                                                Android="{StaticResource MenuItemLabelStyle}"
+                                                iOS="{StaticResource MenuItemLabelStyle}"
+                                                WinPhone="{StaticResource UwpMenuItemLabelStyle}"
+                                                Windows="{StaticResource UwpMenuItemLabelStyle}"></helper:OnCustomPlatform>
+                                        </Label.Style>
+                                    </Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- SEPARATOR -->
+                <Grid 
+                   Grid.Row="4"
+                   BackgroundColor="#f8f8f8"
+                   Opacity="0.2"
+                   HeightRequest="1" />
+            </Grid>
+
+            <Grid
+                Row="1">
+                <controls:LoginButton
+                    x:Name="LoginButton"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Command="{Binding LoginCommand}"
+                    IsVisible="True">
+
+                </controls:LoginButton>
+
+                <controls:LogoutButton
+                    x:Name="LogoutButton"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Command="{Binding LogoutButton}"
+                    IsVisible="False"></controls:LogoutButton>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

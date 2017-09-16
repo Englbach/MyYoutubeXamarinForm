@@ -59,5 +59,26 @@ namespace Youtube.ViewModels
 
             IsBusy = false;
         }
+
+        private TrendingModel.Item _selectedItem;
+
+        public TrendingModel.Item SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                NavigateToVideoDetail(_selectedItem.id);
+                RaiseProtertyChanged(()=>SelectedItem);
+            }
+        }
+
+        private async void NavigateToVideoDetail(string parameter)
+        {
+            if (parameter != null)
+            {
+                await _navigationService.NavigateToAsync(typeof(VideoViewModel), parameter);
+            }
+        }
     }
 }

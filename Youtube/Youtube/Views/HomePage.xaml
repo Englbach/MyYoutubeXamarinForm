@@ -9,25 +9,110 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout
-                               Orientation="Horizontal">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"></RowDefinition>
+                                <RowDefinition Height="150"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                            <ffimageloading:CachedImage
-                                    Source="{Binding snippet.thumbnails.medium}"
+                            <Grid Row="0">
+                                <ffimageloading:CachedImage
+                                    Source="{Binding snippet.thumbnails.maxres.url}"
                                     x:Name="Image" HorizontalOptions="Center" VerticalOptions="Center"
                                     DownsampleToViewSize="true" 
-                                    Aspect="AspectFill" HeightRequest="100" WidthRequest="100" />
-                            <Label 
-                                   Text="{Binding snippet.title}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   TextColor="Black">
+                                    Aspect="AspectFill" HeightRequest="{Binding snippet.thumnails.maxres.height}" WidthRequest="{Binding snippet.thumnails.maxres.height}" />
+                            </Grid>
 
-                            </Label>
-                        </StackLayout>
+                            <Grid Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Column="0">
+
+                                </Grid>
+
+                                <Grid Column="1">
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <Label 
+                                            Text="{Binding snippet.title}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="15"
+                                            TextColor="#3d3d3d">
+
+                                        </Label>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding statistics.viewCount}"
+                                                   TextColor="#d8d8d8"
+                                                   FontSize="12">
+
+                                            </Label>
+                                            <Label Text="{Binding snippet.publishedAt}"
+                                                   TextColor="#d8d8d8"
+                                                   FontSize="12"></Label>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </Grid>
+
+                                <Grid Column="2">
+
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </ContentPage.Content>
 </ContentPage>
+
+
+<!--<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="30"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+
+    <Grid Column="0">
+        <ffimageloading:CachedImage
+            Source="{Binding snippet.thumbnails.medium.url}"
+            x:Name="Image" HorizontalOptions="Center" VerticalOptions="Center"
+            DownsampleToViewSize="true" 
+            Aspect="AspectFill" HeightRequest="100" WidthRequest="100" />
+    </Grid>
+
+    <Grid Column="1">
+        <StackLayout
+            Orientation="Vertical">
+            <Label 
+                Text="{Binding snippet.title}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="15"
+                TextColor="#3d3d3d">
+
+            </Label>
+            <Label Text="{Binding statistics.viewCount}"
+                   TextColor="#d8d8d8"
+                   FontSize="12">
+
+            </Label>
+            <Label Text="{Binding snippet.publishedAt}"
+                   TextColor="#d8d8d8"
+                   FontSize="12"></Label>
+        </StackLayout>
+    </Grid>
+    <Grid Column="2">
+
+    </Grid>
+</Grid>-->
