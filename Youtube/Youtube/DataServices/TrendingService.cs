@@ -22,7 +22,7 @@ namespace Youtube.DataServices
             _authenticationService = authenticationService;
         }
 
-        public async Task<IEnumerable<TrendingModel.RootObject>> GetTrending(int limit, string paging, string chart="mostPopular")
+        public async Task<IEnumerable<TrendingModel.RootObject>> GetTrending(int limit, string paging, string chart)
         {
             string builder = String.Format("https://www.googleapis.com/youtube/v3/videos/?chart={0}&part={1}&key={2}&maxResults={3}", chart, "snippet, contentDetails, statistics, status", GlobalSettings.Key,GlobalSettings.MaxResult);
 

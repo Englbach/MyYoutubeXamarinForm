@@ -51,6 +51,7 @@ namespace Youtube.Models
 
         public class Thumbnails
         {
+            //[Display(Name = "User name")]
             public Default @default { get; set; }
             public Medium medium { get; set; }
             public High high { get; set; }

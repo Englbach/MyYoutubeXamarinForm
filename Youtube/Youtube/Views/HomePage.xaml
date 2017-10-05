@@ -2,68 +2,66 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading"
              x:Class="Youtube.Views.HomePage">
     <ContentPage.Content>
         <ListView x:Name="lstHome" ItemsSource="{Binding TrendingRoots[0].items}">
+            <ListView.Header>
+                <StackLayout Margin="8,10">
+                    <Label>Most Popular Videos</Label>
+                    <Label>This week's most popular videos in every style</Label>
+                </StackLayout>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="300"></RowDefinition>
-                                <RowDefinition Height="150"></RowDefinition>
-                            </Grid.RowDefinitions>
+                        <Grid Margin="8,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                            <Grid Row="0">
+                            <Grid Column="0">
                                 <ffimageloading:CachedImage
-                                    Source="{Binding snippet.thumbnails.maxres.url}"
-                                    x:Name="Image" HorizontalOptions="Center" VerticalOptions="Center"
+                                    Source="{Binding snippet.thumbnails.medium.url}"
+                                    x:Name="Image" VerticalOptions="Start"
                                     DownsampleToViewSize="true" 
-                                    Aspect="AspectFill" HeightRequest="{Binding snippet.thumnails.maxres.height}" WidthRequest="{Binding snippet.thumnails.maxres.height}" />
+                                    Aspect="AspectFit" HeightRequest="{Binding snippet.thumnails.medium.height}" WidthRequest="{Binding snippet.thumnails.medium.width}" />
                             </Grid>
+                            
+                            <Grid Column="1">
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    VerticalOptions="Start">
+                                    <Label 
+                                        Text="{Binding snippet.title}"
+                                        FontSize="15"
+                                        TextColor="#3d3d3d">
 
-                            <Grid Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="30"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                                    </Label>
 
-                                <Grid Column="0">
+                                    <Label
+                                        Text="{Binding snippet.channelTitle}"
+                                        TextColor="#d8d8d8">
 
-                                </Grid>
-
-                                <Grid Column="1">
-                                    <StackLayout
-                                        Orientation="Vertical">
-                                        <Label 
-                                            Text="{Binding snippet.title}"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"
-                                            FontSize="15"
-                                            TextColor="#3d3d3d">
+                                    </Label>
+                                    
+                                    <StackLayout Orientation="Horizontal">
+                                        
+                                        <Label Text="{Binding statistics.viewCount}"
+                                               TextColor="#d8d8d8"
+                                               FontSize="12">
 
                                         </Label>
-
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding statistics.viewCount}"
-                                                   TextColor="#d8d8d8"
-                                                   FontSize="12">
-
-                                            </Label>
-                                            <Label Text="{Binding snippet.publishedAt}"
-                                                   TextColor="#d8d8d8"
-                                                   FontSize="12"></Label>
-                                        </StackLayout>
-
+                                        
+                                        <Label Text="-" Margin="0,5"></Label>
+                                        
+                                        <Label Text="{Binding snippet.publishedAt}"
+                                               TextColor="#d8d8d8"
+                                               FontSize="12"></Label>
                                     </StackLayout>
-                                </Grid>
 
-                                <Grid Column="2">
-
-                                </Grid>
-
+                                </StackLayout>
                             </Grid>
 
                         </Grid>
@@ -74,45 +72,3 @@
         </ListView>
     </ContentPage.Content>
 </ContentPage>
-
-
-<!--<Grid>
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="100"></ColumnDefinition>
-        <ColumnDefinition Width="*"></ColumnDefinition>
-        <ColumnDefinition Width="30"></ColumnDefinition>
-    </Grid.ColumnDefinitions>
-
-    <Grid Column="0">
-        <ffimageloading:CachedImage
-            Source="{Binding snippet.thumbnails.medium.url}"
-            x:Name="Image" HorizontalOptions="Center" VerticalOptions="Center"
-            DownsampleToViewSize="true" 
-            Aspect="AspectFill" HeightRequest="100" WidthRequest="100" />
-    </Grid>
-
-    <Grid Column="1">
-        <StackLayout
-            Orientation="Vertical">
-            <Label 
-                Text="{Binding snippet.title}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                FontSize="15"
-                TextColor="#3d3d3d">
-
-            </Label>
-            <Label Text="{Binding statistics.viewCount}"
-                   TextColor="#d8d8d8"
-                   FontSize="12">
-
-            </Label>
-            <Label Text="{Binding snippet.publishedAt}"
-                   TextColor="#d8d8d8"
-                   FontSize="12"></Label>
-        </StackLayout>
-    </Grid>
-    <Grid Column="2">
-
-    </Grid>
-</Grid>-->

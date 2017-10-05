@@ -47,6 +47,7 @@ namespace Youtube.ViewModels
             {
                 var ridesResult = await _trendingService.GetTrending(0,null, "mostPopular");
                 TrendingRoots = new ObservableCollection<TrendingModel.RootObject>(ridesResult);
+               
             }
             catch (Exception ex) when (ex is WebException || ex is HttpRequestException)
             {

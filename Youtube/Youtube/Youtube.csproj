@@ -61,6 +61,7 @@
     <Compile Include="Helpers\OnCustomPlatform.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="IOperatingSystemVersionProvider.cs" />
+    <Compile Include="Models\ChannelModel.cs" />
     <Compile Include="Models\Enums\MenuItemType.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
